@@ -8,9 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.persistence.Entity;
 
-@Entity
 @RestController
 @RequestMapping("/customer")
 public class CustomerController {
@@ -18,7 +16,6 @@ public class CustomerController {
     private CustomerService customerService;
 
     @Autowired
-
     public CustomerController(CustomerService customerService) {
         this.customerService=customerService;
     }

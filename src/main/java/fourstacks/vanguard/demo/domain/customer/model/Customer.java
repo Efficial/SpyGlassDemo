@@ -1,5 +1,7 @@
 package fourstacks.vanguard.demo.domain.customer.model;
 
+import fourstacks.vanguard.demo.domain.goal.model.Goal;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;

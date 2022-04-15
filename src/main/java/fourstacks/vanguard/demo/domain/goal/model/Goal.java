@@ -1,4 +1,4 @@
-package fourstacks.vanguard.demo.domain.customer.model;
+package fourstacks.vanguard.demo.domain.goal.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,11 +13,27 @@ public class Goal {
     private Long id;
 
     private String goalDescription;
+    private GoalType goalType;
     private ArrayList<GoalMilestone> goalMilestones;
 
     public Goal() {
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public GoalType getGoalType() {
+        return goalType;
+    }
+
+    public void setGoalType(GoalType goalType) {
+        this.goalType = goalType;
+    }
 
     public String getGoalDescription() {
         return goalDescription;
@@ -38,7 +54,9 @@ public class Goal {
     @Override
     public String toString() {
         return "Goal{" +
-                "goalDescription='" + goalDescription + '\'' +
+                "id=" + id +
+                ", goalDescription='" + goalDescription + '\'' +
+                ", goalType=" + goalType +
                 ", goalMilestones=" + goalMilestones +
                 '}';
     }
