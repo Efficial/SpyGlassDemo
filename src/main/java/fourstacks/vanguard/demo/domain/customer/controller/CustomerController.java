@@ -23,9 +23,9 @@ public class CustomerController {
     }
 
     @PostMapping("")
-    public ResponseEntity<Customer> create(@RequestBody Customer actor){
-        actor = customerService.create(actor);
-        return new ResponseEntity<>(actor, HttpStatus.CREATED);
+    public ResponseEntity<Customer> create(@RequestBody Customer customer){
+        customer = customerService.create(customer);
+        return new ResponseEntity<>(customer, HttpStatus.CREATED);
     }
 
 }
