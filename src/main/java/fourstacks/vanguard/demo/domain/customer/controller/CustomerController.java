@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.Entity;
 
+@Entity
 @RestController
 @RequestMapping("/customer")
 public class CustomerController {

@@ -8,5 +8,5 @@ public interface CustomerService {
     Customer getById(Long id) throws CustomerNotFoundException;
     Customer getByFullName(String firstName, String lastName) throws CustomerNotFoundException;
     Customer update(Customer customer) throws CustomerNotFoundException;
-    void delete(String firstName, String lastName) throws CustomerNotFoundException;
+    void delete(Long id) throws CustomerNotFoundException;
 }
