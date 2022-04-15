@@ -1,5 +1,5 @@
 package fourstacks.vanguard.demo.domain.customer.model;
 
 public enum GoalType {
-    CAREER, EDUCATIONAL, FINANCIAL, HEALTH, RELATIONSHIP, PERSONAL_SPIRITUAL, OTHER
+   DEBT_PAYOFF, HOME_PURCHASE, RETIREMENT, SAVINGS
 }
