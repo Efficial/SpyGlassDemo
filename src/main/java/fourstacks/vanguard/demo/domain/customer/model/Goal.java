@@ -10,12 +10,17 @@ import java.util.ArrayList;
 public class Goal {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+
    private GoalType goalType;
+    private Long id;
+
+
     private String goalDescription;
     private ArrayList<GoalMilestone> goalMilestones;
 
     public Goal() {
     }
+
 
     public GoalType getGoalType() {
         return goalType;
@@ -24,6 +29,7 @@ public class Goal {
     public void setGoalType(GoalType goalType) {
         this.goalType = goalType;
     }
+
 
     public String getGoalDescription() {
         return goalDescription;
