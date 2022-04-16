@@ -1,4 +1,4 @@
-package fourstacks.vanguard.demo.domain.customer.model;
+package fourstacks.vanguard.demo.domain.goal.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
