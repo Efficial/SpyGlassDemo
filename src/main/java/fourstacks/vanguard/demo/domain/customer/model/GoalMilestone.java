@@ -9,12 +9,25 @@ import javax.persistence.Id;
 public class GoalMilestone {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-
+    private Long id;
     private Boolean isCompleted;
     private String goalMileStoneDescription;
 
 
     public GoalMilestone() {
+    }
+
+    public GoalMilestone(Boolean isCompleted, String goalMileStoneDescription) {
+        this.isCompleted = isCompleted;
+        this.goalMileStoneDescription = goalMileStoneDescription;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Boolean getCompleted() {
@@ -36,7 +49,8 @@ public class GoalMilestone {
     @Override
     public String toString() {
         return "GoalMilestone{" +
-                "isCompleted=" + isCompleted +
+                "id=" + id +
+                ", isCompleted=" + isCompleted +
                 ", goalMileStoneDescription='" + goalMileStoneDescription + '\'' +
                 '}';
     }

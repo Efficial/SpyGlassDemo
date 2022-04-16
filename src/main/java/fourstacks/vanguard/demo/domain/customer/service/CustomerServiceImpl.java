@@ -3,6 +3,8 @@ package fourstacks.vanguard.demo.domain.customer.service;
 import fourstacks.vanguard.demo.domain.customer.exceptions.CustomerNotFoundException;
 import fourstacks.vanguard.demo.domain.customer.model.Customer;
 import fourstacks.vanguard.demo.domain.customer.repo.CustomerRepo;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,6 +12,7 @@ import java.util.Optional;
 
 @Service
 public class CustomerServiceImpl implements CustomerService {
+    private static Logger logger = LoggerFactory.getLogger(CustomerServiceImpl.class);
     private CustomerRepo customerRepo;
 
     @Autowired
@@ -55,5 +58,9 @@ public class CustomerServiceImpl implements CustomerService {
         customerRepo.delete(customerOptional.get());
     }
 
+    @Override
+    public Iterable<Customer> findAll() {
+        return customerRepo.findAll();
+    }
 
 }

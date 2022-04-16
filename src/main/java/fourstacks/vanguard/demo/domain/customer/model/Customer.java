@@ -18,11 +18,28 @@ public class Customer {
     private Date dateOfBirth;
     private String aboutMe;
     private String photo;
+
+    @OneToMany(targetEntity = Goal.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
+    @JoinColumn(name = "customerId", referencedColumnName = "id")
     private List<Goal> goal;
 
 
     public Customer() {
     }
+
+    public Customer(String firstName, String lastName, Long accountNum,
+                    String userName,
+                    String password,
+                    Date dateOfBirth) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.accountNum = accountNum;
+        this.userName = userName;
+        this.password = password;
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    
 
     public Long getId() {
         return id;

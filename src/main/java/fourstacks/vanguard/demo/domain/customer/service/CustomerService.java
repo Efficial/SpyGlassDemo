@@ -9,4 +9,5 @@ public interface CustomerService {
     Customer getByFullName(String firstName, String lastName) throws CustomerNotFoundException;
     Customer update(Customer customer) throws CustomerNotFoundException;
     void delete(Long id) throws CustomerNotFoundException;
+    Iterable<Customer> findAll();
 }
