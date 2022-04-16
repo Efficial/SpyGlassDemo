@@ -48,15 +48,8 @@ public class Goal {
 
     public void setGoalDescription(String goalDescription) {
         this.goalDescription = goalDescription;
-    }
+        this.goalMilestones = goalMilestones;}
 
-    public ArrayList<GoalMilestone> getGoalMilestones() {
-        return goalMilestones;
-    }
-
-    public void setGoalMilestones(ArrayList<GoalMilestone> goalMilestones) {
-        this.goalMilestones = goalMilestones;
-    }
 
     @Override
     public String toString() {
