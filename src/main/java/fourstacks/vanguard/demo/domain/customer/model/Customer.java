@@ -1,5 +1,7 @@
 package fourstacks.vanguard.demo.domain.customer.model;
 
+import fourstacks.vanguard.demo.domain.expense.model.Expense;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
@@ -18,7 +20,8 @@ public class Customer {
     private Date dateOfBirth;
     private String aboutMe;
     private String photo;
-    private List<Goal> goal;
+    private List<Goal> goals;
+    private List<Expense> expenses;
 
 
     public Customer() {
@@ -104,6 +107,14 @@ public class Customer {
         this.goal = goal;
     }
 
+    public List<Expense> getExpenses() {
+        return expenses;
+    }
+
+    public void setExpenses(List<Expense> expenses) {
+        this.expenses = expenses;
+    }
+
     @Override
     public String toString() {
         return "Customer{" +
@@ -116,7 +127,8 @@ public class Customer {
                 ", dateOfBirth=" + dateOfBirth +
                 ", aboutMe='" + aboutMe + '\'' +
                 ", photo='" + photo + '\'' +
-                ", goal=" + goal +
+                ", goals=" + goals +
+                ", expenses=" + expenses +
                 '}';
     }
 }
