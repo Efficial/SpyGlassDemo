@@ -48,4 +48,9 @@ public class GoalServiceImpl implements GoalService {
             throw new GoalNotFoundException("Goal not found");
         goalRepo.delete(goalOptional.get());
     }
+
+    @Override
+    public Iterable<Goal> findAll() throws GoalNotFoundException {
+        return goalRepo.findAll();
+    }
 }
