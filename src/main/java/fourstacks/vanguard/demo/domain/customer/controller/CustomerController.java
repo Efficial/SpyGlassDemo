@@ -13,11 +13,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 
-<<<<<<< HEAD
-//@Entity
-=======
-
->>>>>>> 0a5aa7d22c597fd0ae7e1a3de1d2cd679a5fa1d1
 @RestController
 @RequestMapping("/customer")
 @Slf4j

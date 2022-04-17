@@ -35,7 +35,7 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public Customer getByFullName(String firstName, String lastName) throws CustomerNotFoundException {
-        Optional<Customer> customerOptional = customerRepo.findByFirstandLastName(firstName, lastName);
+        Optional<Customer> customerOptional = customerRepo.findByFirstAndLastName(firstName, lastName);
         if (customerOptional.isEmpty())
             throw new CustomerNotFoundException("Customer not found");
         return customerOptional.get();

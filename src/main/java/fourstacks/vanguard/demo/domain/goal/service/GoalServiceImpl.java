@@ -1,9 +1,12 @@
 package fourstacks.vanguard.demo.domain.goal.service;
 
 
+import fourstacks.vanguard.demo.domain.customer.service.CustomerServiceImpl;
 import fourstacks.vanguard.demo.domain.goal.exceptions.GoalNotFoundException;
 import fourstacks.vanguard.demo.domain.goal.model.Goal;
 import fourstacks.vanguard.demo.domain.goal.repo.GoalRepo;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +15,7 @@ import java.util.Optional;
 
 @Service
 public class GoalServiceImpl implements GoalService {
+    private static Logger logger = LoggerFactory.getLogger(GoalServiceImpl.class);
     private GoalRepo goalRepo;
 
     @Autowired
