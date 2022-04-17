@@ -63,4 +63,13 @@ public class CustomerServiceImpl implements CustomerService {
         return customerRepo.findAll();
     }
 
+    @Override
+    public Customer findByUserName(String userName) throws CustomerNotFoundException {
+        Optional<Customer> customerOptional = customerRepo.findByUserName(userName);
+        if(customerOptional.isEmpty())
+            throw new CustomerNotFoundException("Customer not found");
+        return customerOptional.get();
+    }
+
+
 }

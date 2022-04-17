@@ -10,4 +10,5 @@ public interface CustomerService {
     Customer update(Customer customer) throws CustomerNotFoundException;
     void delete(Long id) throws CustomerNotFoundException;
     Iterable<Customer> findAll();
+    Customer findByUserName(String userName) throws CustomerNotFoundException;
 }
