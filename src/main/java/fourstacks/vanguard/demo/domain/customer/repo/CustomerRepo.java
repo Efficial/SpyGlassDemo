@@ -7,4 +7,5 @@ import java.util.Optional;
 
 public interface CustomerRepo extends CrudRepository<Customer, Long> {
     Optional<Customer> findByFirstandLastName(String firstName, String lastName);
+    Optional<Customer> findByUserName(String userName);
 }

@@ -22,6 +22,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import static org.mockito.Mockito.doReturn;
+
 @SpringBootTest
 @ExtendWith(SpringExtension.class)
 public class CustomerTest {
@@ -47,7 +49,7 @@ public class CustomerTest {
     @Test
     @DisplayName("Customer Service create - success")
     public void createCustomer()  {
-        BDDMockito.doReturn(output).when(customerRepo).save(ArgumentMatchers.any());
+        doReturn(output).when(customerRepo).save(ArgumentMatchers.any());
         Customer returnedCustomer = customerService.create(input);
         Assertions.assertNotNull(output);
         Assertions.assertEquals(returnedCustomer.getId(), 1l);
@@ -56,7 +58,7 @@ public class CustomerTest {
     @Test
     @DisplayName("Customer Service Find By Id - success")
     public void findCustomerByIdTest01() throws CustomerNotFoundException {
-        BDDMockito.doReturn(Optional.of(input)).when(customerRepo).findById(1l);
+        doReturn(Optional.of(input)).when(customerRepo).findById(1l);
         Customer foundCustomer= customerService.getById(1l);
         Assertions.assertEquals(input.toString(), foundCustomer.toString());
     }
@@ -64,7 +66,7 @@ public class CustomerTest {
     @Test
     @DisplayName("Customer Service findByID - Fail")
     public void findCustomerByIdTest02 (){
-        BDDMockito.doReturn(Optional.empty()).when(customerRepo).findById(1l);
+        doReturn(Optional.empty()).when(customerRepo).findById(1l);
         Assertions.assertThrows(CustomerNotFoundException.class, () -> {
             customerService.getById(1l);
 
@@ -76,7 +78,7 @@ public class CustomerTest {
     public void findAllCustomersTestSuccess(){
         List<Customer> customers = new ArrayList<>();
         customers.add(input);
-        BDDMockito.doReturn(customers).when(customerRepo).findAll();
+        doReturn(customers).when(customerRepo).findAll();
         Iterable <Customer> responseCustomer= customerService.findAll();
         Assertions.assertIterableEquals(customers, responseCustomer);
     }
@@ -87,8 +89,8 @@ public class CustomerTest {
         SimpleDateFormat Dateformat = new SimpleDateFormat("MM-dd-yyyy");
         Customer expectedCustomerUpdate = new Customer("Emmanuel", "Warrior", 2021l, "efficial", "codeDiff1", Dateformat.parse("01-26-1997"));
         expectedCustomerUpdate.setId(1l);
-        BDDMockito.doReturn(Optional.of(input)).when(customerRepo).findById(1l);
-        BDDMockito.doReturn(expectedCustomerUpdate).when(customerRepo).save(ArgumentMatchers.any());
+        doReturn(Optional.of(input)).when(customerRepo).findById(1l);
+        doReturn(expectedCustomerUpdate).when(customerRepo).save(ArgumentMatchers.any());
         Customer actualActor = customerService.update(expectedCustomerUpdate);
         Assertions.assertEquals(expectedCustomerUpdate.toString(), actualActor.toString());
     }
@@ -98,7 +100,7 @@ public class CustomerTest {
     public void updateCustomerTest02() throws ParseException {
         SimpleDateFormat Dateformat = new SimpleDateFormat("MM-dd-yyyy");
         Customer updatedCustomer = new Customer("Emmanuel", "Warrior", 2021l, "efficial", "codeDiff1", Dateformat.parse("01-26-1997"));
-        BDDMockito.doReturn(Optional.empty()).when(customerRepo).findById(1l);
+        doReturn(Optional.empty()).when(customerRepo).findById(1l);
         Assertions.assertThrows(CustomerNotFoundException.class, () ->{
             customerService.update(updatedCustomer);
         });
@@ -108,10 +110,20 @@ public class CustomerTest {
     @Test
     @DisplayName("Delete Customer")
     public void deleteCustomer(){
-        BDDMockito.doReturn(Optional.empty()).when(customerRepo).findById(1l);
+        doReturn(Optional.empty()).when(customerRepo).findById(1l);
         Assertions.assertThrows(CustomerNotFoundException.class, ()-> {
             customerService.delete(1l);
         });
+    }
+
+
+    @Test
+    @DisplayName("Customer Service - FindByUserName")
+    public void findByUserName() throws CustomerNotFoundException {
+        String userName= "ycamposxo";
+        doReturn(Optional.of(output)).when(customerRepo).findByUserName(userName);
+        Customer actualCustomer = customerService.findByUserName(userName);
+        Assertions.assertEquals(userName, actualCustomer.getUserName());
     }
 }
 

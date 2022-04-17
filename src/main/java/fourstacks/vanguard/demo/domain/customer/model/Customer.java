@@ -21,13 +21,14 @@ public class Customer {
     private String aboutMe;
     private String photo;
 
-    private List<Goal> goals;
+    @OneToMany(targetEntity = Expense.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
+    @JoinColumn(name = "customerId", referencedColumnName = "id")
     private List<Expense> expenses;
 
 
     @OneToMany(targetEntity = Goal.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
     @JoinColumn(name = "customerId", referencedColumnName = "id")
-    private List<Goal> goal;
+    private List<Goal> goals;
 
     public Customer() {
     }
@@ -116,12 +117,12 @@ public class Customer {
         this.photo = photo;
     }
 
-    public List<Goal> getGoal() {
-        return goal;
+    public List<Goal> getGoals() {
+        return goals;
     }
 
-    public void setGoal(List<Goal> goal) {
-        this.goal = goal;
+    public void setGoals(List<Goal> goals) {
+        this.goals = goals;
     }
 
     public List<Expense> getExpenses() {
