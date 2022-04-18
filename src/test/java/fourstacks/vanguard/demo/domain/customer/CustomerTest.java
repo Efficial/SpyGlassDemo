@@ -35,7 +35,6 @@ public class CustomerTest {
     private CustomerService customerService;
 
     private Customer input;
-
     private Customer output;
 
     @BeforeEach

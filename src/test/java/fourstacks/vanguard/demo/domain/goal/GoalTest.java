@@ -35,8 +35,6 @@ public class GoalTest {
     @Autowired
     private GoalService goalService;
 
-
-
     private Goal input;
     private Goal output;
 
@@ -44,7 +42,6 @@ public class GoalTest {
     public void setUp() throws ParseException {
         SimpleDateFormat Dateformat = new SimpleDateFormat("MM-dd-yyyy");
         Customer customer =  new Customer("Yennifer", "Campos", 2022l, "ycampos", "codeDiff", Dateformat.parse("01-26-1997"));
-
         input = new Goal(customer, GoalType.DEBT_PAYOFF, "Pay credit card", "Pay off $2,000 in 6 moths", Dateformat.parse("10-18-2022"),2000.00, 500.00);
         output = new Goal(customer, GoalType.DEBT_PAYOFF, "Pay credit card", "Pay off $2,000 in 6 moths", Dateformat.parse("10-18-2022"),2000.00, 500.00);
         output.setId(1L);
