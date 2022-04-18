@@ -16,8 +16,7 @@ public class Customer {
     private String firstName;
     private String lastName;
     private Long accountNum;
-    private String userName;
-    private String password;
+    private String email;
     private Date dateOfBirth;
     private String aboutMe;
     private String photo;
@@ -29,16 +28,13 @@ public class Customer {
     public Customer() {
     }
 
-    public Customer(String firstName, String lastName, Long accountNum,
-                    String userName,
-                    String password,
+    public Customer(String firstName, String lastName, Long accountNum, String email,
                     Date dateOfBirth) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.accountNum = accountNum;
-        this.userName = userName;
-        this.password = password;
         this.dateOfBirth = dateOfBirth;
+        this.email = email;
     }
 
     public Long getId() {
@@ -81,20 +77,12 @@ public class Customer {
         this.accountNum = accountNum;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getEmail() {
+        return email;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public Date getDateOfBirth() {
@@ -128,11 +116,11 @@ public class Customer {
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", accountNum=" + accountNum +
-                ", userName='" + userName + '\'' +
-                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
                 ", dateOfBirth=" + dateOfBirth +
                 ", aboutMe='" + aboutMe + '\'' +
                 ", photo='" + photo + '\'' +
+                ", goals=" + goals +
                 '}';
     }
 }

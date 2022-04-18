@@ -10,8 +10,8 @@ public interface CustomerService {
     Customer getById(Long id) throws CustomerNotFoundException;
     Customer getByFullName(String firstName, String lastName) throws CustomerNotFoundException;
     Customer update(Customer customer) throws CustomerNotFoundException;
-    void delete(Long id) throws CustomerNotFoundException;
+    Boolean delete(Long id) throws CustomerNotFoundException;
     Iterable<Customer> findAll();
     Iterable<Goal> findAllGoalsByCustomer(Customer customer) throws CustomerNotFoundException;
-    Customer findByUserName(String userName) throws CustomerNotFoundException;
+    Customer findByEmail(String email) throws CustomerNotFoundException;
 }
