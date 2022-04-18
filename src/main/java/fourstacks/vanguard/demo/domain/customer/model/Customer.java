@@ -1,11 +1,8 @@
 package fourstacks.vanguard.demo.domain.customer.model;
-
-<<<<<<< HEAD
-=======
 import fourstacks.vanguard.demo.domain.goal.model.Goal;
->>>>>>> ashley
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name="customer")
@@ -23,18 +20,16 @@ public class Customer {
     private String aboutMe;
     private String photo;
 
-<<<<<<< HEAD
-=======
+
 //    @OneToMany(targetEntity = Expense.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
 //    @JoinColumn(name = "customerId", referencedColumnName = "id")
 //    private List<Expense> expenses;
 
 
-    //@OneToMany(targetEntity = Goal.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
-    //@JoinColumn(name = "customerId", referencedColumnName = "id")
-    //private List<Goal> goals;
+    @OneToMany(targetEntity = Goal.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
+    @JoinColumn(name = "customerId", referencedColumnName = "id")
+    private List<Goal> goals;
 
->>>>>>> ashley
     public Customer() {
     }
 
@@ -56,6 +51,14 @@ public class Customer {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public List<Goal> getGoals() {
+        return goals;
+    }
+
+    public void setGoals(List<Goal> goals) {
+        this.goals = goals;
     }
 
     public String getFirstName() {
@@ -122,9 +125,6 @@ public class Customer {
         this.photo = photo;
     }
 
-<<<<<<< HEAD
-=======
-
 //    public List<Expense> getExpenses() {
 //        return expenses;
 //    }
@@ -133,7 +133,6 @@ public class Customer {
 //        this.expenses = expenses;
 //    }
 
->>>>>>> ashley
     @Override
     public String toString() {
         return "Customer{" +

@@ -37,7 +37,7 @@ public class CustomerServiceImpl implements CustomerService {
             throw new CustomerNotFoundException("Customer doesn't exist");
         Customer customer1 = customerOptional.get();
         List<Goal> goalList = customer1.getGoals();
-        goalService.create(goal);
+        goal = goalService.create(goal);
         goalList.add(goal);
         customer1.setGoals(goalList);
         return customerRepo.save(customer1);

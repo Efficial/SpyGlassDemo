@@ -7,8 +7,6 @@ import fourstacks.vanguard.demo.domain.goal.exceptions.GoalNotFoundException;
 import fourstacks.vanguard.demo.domain.goal.model.Goal;
 import fourstacks.vanguard.demo.domain.goal.service.GoalService;
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -35,9 +33,9 @@ public class CustomerController {
     }
 
     @PutMapping("")
-    public ResponseEntity<Customer> updateGoal(@RequestBody Customer customer, Goal goal) throws CustomerNotFoundException, GoalNotFoundException {
-        goal = (Goal) goalService.findAll();
-        Customer response = customerService.createGoal(customer, goal);
+    public ResponseEntity<Customer> updateGoal(@RequestBody Goal goal) throws CustomerNotFoundException, GoalNotFoundException {
+        goal = goalService.getById(goal.getId());
+        Customer response = customerService.createGoal(goal.getCustomer(), goal);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 

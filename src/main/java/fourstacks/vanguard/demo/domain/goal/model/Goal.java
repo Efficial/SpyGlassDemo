@@ -30,6 +30,7 @@ public class Goal {
         this.customer = customer;
         this.goalType = goalType;
         this.name = name;
+        this.targetSavingsAmount = targetSavingsAmount;
         this.goalDescription = goalDescription;
         this.savingsDateGoal = savingsDateGoal;
         this.amountAlreadySaved = amountAlreadySaved;

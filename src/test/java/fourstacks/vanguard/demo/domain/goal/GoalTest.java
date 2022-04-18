@@ -90,7 +90,7 @@ public class GoalTest {
         Customer customer =  new Customer("Yennifer", "Campos", 2022l, "ycampos", "codeDiff", Dateformat.parse("01-26-1997"));
         Goal expectedGoalUpdate =  new Goal(customer, GoalType.DEBT_PAYOFF, "Pay credit card", "Pay off $2,000 in 6 moths", Dateformat.parse("10-18-2022"),4000.00, 700.00);
         expectedGoalUpdate.setId(1L);
-        doReturn(Optional.of(input)).when(goalService).getById(1L);
+        doReturn(Optional.of(input)).when(goalRepo).findById(1L);
         doReturn(expectedGoalUpdate).when(goalRepo).save(ArgumentMatchers.any());
         Goal actualGoal = goalService.update(expectedGoalUpdate);
         Assertions.assertEquals(expectedGoalUpdate.toString(), actualGoal.toString());
