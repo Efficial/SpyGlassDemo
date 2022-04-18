@@ -2,6 +2,7 @@ package fourstacks.vanguard.demo.domain.goal.model;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Goal {
@@ -13,8 +14,8 @@ public class Goal {
     private String goalDescription;
 
     @OneToMany(targetEntity = GoalMilestone.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
-    @JoinColumn(name = "goalId", referencedColumnName = "id")
-    private ArrayList<GoalMilestone> goalMilestones;
+    @JoinColumn(name = "goalIds", referencedColumnName = "ids")
+    private List<GoalMilestone> goalMilestones;
 
     public Goal() {
     }
