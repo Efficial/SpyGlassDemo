@@ -6,6 +6,10 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.Optional;
 
 public interface CustomerRepo extends CrudRepository<Customer, Long> {
+
+    Optional<Customer> findByFirstAndLastName(String firstName, String lastName);
+
     Optional<Customer> findByFirstandLastName(String firstName, String lastName);
     Optional<Customer> findByUserName(String userName);
+
 }

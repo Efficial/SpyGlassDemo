@@ -11,5 +11,5 @@ public interface GoalService{
     Goal getById(Long id) throws GoalNotFoundException;
     Goal update(Goal goal) throws GoalNotFoundException;
     void delete(Long id) throws GoalNotFoundException;
-     Iterable<Goal> findAll() throws GoalNotFoundException;
+    Iterable<Goal> findAll() throws GoalNotFoundException;
 }
