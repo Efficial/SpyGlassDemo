@@ -27,6 +27,7 @@ public class CustomerController {
         return new ResponseEntity<>(customer, HttpStatus.CREATED);
     }
 
+
     @GetMapping("/{id}")
     public ResponseEntity<Customer> requestUser(@PathVariable Long id) throws CustomerNotFoundException {
         Customer response = customerService.getById(id);
