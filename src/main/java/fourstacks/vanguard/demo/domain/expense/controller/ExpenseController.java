@@ -3,6 +3,7 @@ package fourstacks.vanguard.demo.domain.expense.controller;
 import fourstacks.vanguard.demo.domain.expense.exception.ExpenseNotFoundException;
 import fourstacks.vanguard.demo.domain.expense.model.Expense;
 import fourstacks.vanguard.demo.domain.expense.service.ExpenseService;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("expense")
+@Slf4j
 public class ExpenseController {
     private static Logger logger = LoggerFactory.getLogger(ExpenseController.class);
     private ExpenseService expenseService;
