@@ -1,4 +1,4 @@
-package fourstacks.vanguard.demo.customerTest;
+package fourstacks.vanguard.demo.domain.customer;
 
 import fourstacks.vanguard.demo.domain.customer.exceptions.CustomerNotFoundException;
 import fourstacks.vanguard.demo.domain.customer.model.Customer;
@@ -120,7 +120,7 @@ public class CustomerTest {
     @Test
     @DisplayName("Customer Service - FindByUserName")
     public void findByUserName() throws CustomerNotFoundException {
-        String userName= "ycamposxo";
+        String userName= "ycampos";
         doReturn(Optional.of(output)).when(customerRepo).findByUserName(userName);
         Customer actualCustomer = customerService.findByUserName(userName);
         Assertions.assertEquals(userName, actualCustomer.getUserName());

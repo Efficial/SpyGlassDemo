@@ -22,6 +22,7 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public Customer create(Customer customer) {
+        customer.setId(customer.getId());
         return customerRepo.save(customer);
     }
 
@@ -33,13 +34,13 @@ public class CustomerServiceImpl implements CustomerService {
         return customerOptional.get();
     }
 
-    @Override
+    /*@Override
     public Customer getByFullName(String firstName, String lastName) throws CustomerNotFoundException {
         Optional<Customer> customerOptional = customerRepo.findByFirstAndLastName(firstName, lastName);
         if (customerOptional.isEmpty())
             throw new CustomerNotFoundException("Customer not found");
         return customerOptional.get();
-    }
+    }*/
 
     @Override
     public Customer update(Customer customer) throws CustomerNotFoundException {

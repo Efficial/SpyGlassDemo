@@ -9,6 +9,6 @@ import java.util.Optional;
 public interface ExpenseRepo extends CrudRepository<Expense, Long> {
 
     Optional<Expense> findById(Long id);
-    Optional<Expense> findByCategory(Category category);
+
 
 }
