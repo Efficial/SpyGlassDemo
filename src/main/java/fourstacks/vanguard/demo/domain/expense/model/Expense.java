@@ -1,24 +1,55 @@
 package fourstacks.vanguard.demo.domain.expense.model;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
-
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
-@NoArgsConstructor
-@Data
-@ToString
-@Table(name="expense")
 public class Expense {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @ManyToOne
+
     private Category category;
     private String description;
 
+    public Expense() {
+    }
+
+    public Expense(Long id, Category category, String description) {
+        this.id = id;
+        this.category = category;
+        this.description = description;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    @Override
+    public String toString() {
+        return "Expense{" +
+                "id=" + id +
+                ", category=" + category +
+                ", description='" + description + '\'' +
+                '}';
+    }
 }
