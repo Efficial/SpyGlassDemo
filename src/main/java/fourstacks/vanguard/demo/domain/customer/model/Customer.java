@@ -1,5 +1,7 @@
 package fourstacks.vanguard.demo.domain.customer.model;
+
 import fourstacks.vanguard.demo.domain.goal.model.Goal;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
@@ -19,12 +21,6 @@ public class Customer {
     private Date dateOfBirth;
     private String aboutMe;
     private String photo;
-
-
-//    @OneToMany(targetEntity = Expense.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
-//    @JoinColumn(name = "customerId", referencedColumnName = "id")
-//    private List<Expense> expenses;
-
 
     @OneToMany(targetEntity = Goal.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
     @JoinColumn(name = "customerId", referencedColumnName = "id")
@@ -124,14 +120,6 @@ public class Customer {
     public void setPhoto(String photo) {
         this.photo = photo;
     }
-
-//    public List<Expense> getExpenses() {
-//        return expenses;
-//    }
-
-//    public void setExpenses(List<Expense> expenses) {
-//        this.expenses = expenses;
-//    }
 
     @Override
     public String toString() {

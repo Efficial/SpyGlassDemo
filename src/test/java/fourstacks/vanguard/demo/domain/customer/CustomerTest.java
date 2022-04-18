@@ -115,7 +115,6 @@ public class CustomerTest {
         });
     }
 
-
     @Test
     @DisplayName("Customer Service - FindByUserName")
     public void findByUserName() throws CustomerNotFoundException {

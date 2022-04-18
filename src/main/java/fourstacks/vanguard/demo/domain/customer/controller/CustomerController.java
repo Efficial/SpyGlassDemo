@@ -1,5 +1,4 @@
 package fourstacks.vanguard.demo.domain.customer.controller;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import fourstacks.vanguard.demo.domain.customer.exceptions.CustomerNotFoundException;
 import fourstacks.vanguard.demo.domain.customer.model.Customer;
 import fourstacks.vanguard.demo.domain.customer.service.CustomerService;

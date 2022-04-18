@@ -8,7 +8,7 @@ public interface CustomerService {
     Customer create(Customer customer);
     Customer createGoal(Customer customer, Goal goal) throws CustomerNotFoundException;
     Customer getById(Long id) throws CustomerNotFoundException;
-    //Customer getByFullName(String firstName, String lastName) throws CustomerNotFoundException;
+    Customer getByFullName(String firstName, String lastName) throws CustomerNotFoundException;
     Customer update(Customer customer) throws CustomerNotFoundException;
     void delete(Long id) throws CustomerNotFoundException;
     Iterable<Customer> findAll();
