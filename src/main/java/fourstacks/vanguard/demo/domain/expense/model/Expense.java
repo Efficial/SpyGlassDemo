@@ -2,7 +2,7 @@ package fourstacks.vanguard.demo.domain.expense.model;
 
 import javax.persistence.*;
 
-@Entity
+
 public class Expense {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

@@ -21,9 +21,9 @@ public class Customer {
     private String aboutMe;
     private String photo;
 
-    @OneToMany(targetEntity = Expense.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
-    @JoinColumn(name = "customerId", referencedColumnName = "id")
-    private List<Expense> expenses;
+//    @OneToMany(targetEntity = Expense.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
+//    @JoinColumn(name = "customerId", referencedColumnName = "id")
+//    private List<Expense> expenses;
 
 
     @OneToMany(targetEntity = Goal.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
@@ -125,13 +125,13 @@ public class Customer {
         this.goals = goals;
     }
 
-    public List<Expense> getExpenses() {
-        return expenses;
-    }
+//    public List<Expense> getExpenses() {
+//        return expenses;
+//    }
 
-    public void setExpenses(List<Expense> expenses) {
-        this.expenses = expenses;
-    }
+//    public void setExpenses(List<Expense> expenses) {
+//        this.expenses = expenses;
+//    }
 
     @Override
     public String toString() {
@@ -146,7 +146,7 @@ public class Customer {
                 ", aboutMe='" + aboutMe + '\'' +
                 ", photo='" + photo + '\'' +
                 ", goals=" + goals +
-                ", expenses=" + expenses +
+//                ", expenses=" + expenses +
                 '}';
     }
 }

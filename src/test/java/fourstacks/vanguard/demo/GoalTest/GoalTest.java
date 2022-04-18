@@ -31,17 +31,17 @@ public class GoalTest {
     @Autowired
     private GoalService goalService;
 
-    private ArrayList<GoalMilestone> goalMilestone = new ArrayList<>();
+    private List<GoalMilestone> goalMilestone = new ArrayList<>();
     private GoalType goalType;
     private Goal input;
     private Goal output;
 
     @BeforeEach
     public void setUp() {
-        goalMilestone.add(new GoalMilestone(false, "Pay mortgage"));
-        goalMilestone.add(new GoalMilestone(false, "Pay car note"));
-        input = new Goal("Complete all Goals", goalMilestone, goalType);
-        output = new Goal("Finish all tasks", goalMilestone, goalType);
+        goalMilestone.add(new GoalMilestone(false, "save 5k first month"));
+        goalMilestone.add(new GoalMilestone(false, "save 5k second month"));
+        input = new Goal("Complete all Goals", goalMilestone, GoalType.SAVINGS);
+        output = new Goal("Save 20k for home purchase", goalMilestone, GoalType.HOME_PURCHASE);
         output.setId(1L);
     }
 
