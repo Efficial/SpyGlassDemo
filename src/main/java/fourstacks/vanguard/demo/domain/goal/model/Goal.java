@@ -3,19 +3,17 @@ package fourstacks.vanguard.demo.domain.goal.model;
 import fourstacks.vanguard.demo.domain.customer.model.Customer;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 @Entity
 public class Goal {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-@ManyToOne
-@JoinColumn(name= "user_id")
-private Customer customer;
 
+    @ManyToOne
+    @JoinColumn(name= "user_id")
+    private Customer customer;
     private GoalType goalType;
     private String name;
     private String goalDescription;
@@ -24,8 +22,6 @@ private Customer customer;
     private Double amountAlreadySaved;
     private Double amountLeftUntilGoal;
     private Double progressPercentage;
-
-
 
     public Goal() {
     }
@@ -36,8 +32,6 @@ private Customer customer;
         this.name = name;
         this.goalDescription = goalDescription;
         this.savingsDateGoal = savingsDateGoal;
-
-
         this.amountAlreadySaved = amountAlreadySaved;
     }
 

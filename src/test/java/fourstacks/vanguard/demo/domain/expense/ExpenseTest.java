@@ -1,7 +1,8 @@
-package fourstacks.vanguard.demo.domain.expense.model;
+package fourstacks.vanguard.demo.domain.expense;
 
 import fourstacks.vanguard.demo.domain.customer.model.Customer;
 import fourstacks.vanguard.demo.domain.expense.exception.ExpenseNotFoundException;
+import fourstacks.vanguard.demo.domain.expense.model.Expense;
 import fourstacks.vanguard.demo.domain.expense.repo.ExpenseRepo;
 import fourstacks.vanguard.demo.domain.expense.service.ExpenseService;
 import org.junit.jupiter.api.Assertions;
@@ -16,8 +17,6 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.Optional;
-
-import static fourstacks.vanguard.demo.domain.expense.model.Category.HOME_AUTO;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.doReturn;
 
