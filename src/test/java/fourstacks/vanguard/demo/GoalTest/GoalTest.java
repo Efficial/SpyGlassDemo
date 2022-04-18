@@ -13,6 +13,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentMatchers;
 import static org.mockito.BDDMockito.*;
+
+import org.mockito.BDDMockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -119,5 +121,18 @@ public class GoalTest {
         Assertions.assertThrows(GoalNotFoundException.class, () ->{
             goalService.delete(1L);
         });
+    }
+
+
+    @Test
+    @DisplayName("Calculate Progress Test - Success")
+    public void calculateProgressTestSuccess(){
+        BDDMockito.doReturn(input).when(goalRepo).save(ArgumentMatchers.any());
+        Goal returnedGoal = goalService.create(input);
+        Assertions.assertNotNull(returnedGoal);
+
+        Double expected = 20.00;
+        Double actual = returnedGoal.getProgressPercentage();
+        Assertions.assertEquals(expected,actual);
     }
 }
