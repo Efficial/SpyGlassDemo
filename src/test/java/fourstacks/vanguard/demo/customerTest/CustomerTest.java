@@ -119,7 +119,7 @@ public class CustomerTest {
     @Test
     @DisplayName("Customer Service - FindByUserName")
     public void findByUserName() throws CustomerNotFoundException {
-        String userName= "ycamposxo";
+        String userName= "ycampos";
         doReturn(Optional.of(output)).when(customerRepo).findByUserName(userName);
         Customer actualCustomer = customerService.findByUserName(userName);
         Assertions.assertEquals(userName, actualCustomer.getUserName());
