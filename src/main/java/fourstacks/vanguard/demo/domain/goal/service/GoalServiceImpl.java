@@ -1,7 +1,6 @@
 package fourstacks.vanguard.demo.domain.goal.service;
 
 
-import fourstacks.vanguard.demo.domain.customer.service.CustomerServiceImpl;
 import fourstacks.vanguard.demo.domain.goal.exceptions.GoalNotFoundException;
 import fourstacks.vanguard.demo.domain.goal.model.Goal;
 import fourstacks.vanguard.demo.domain.goal.repo.GoalRepo;
@@ -29,6 +28,16 @@ public class GoalServiceImpl implements GoalService {
     public Goal create(Goal goal) {
         calculateProgress(goal);
         return goalRepo.save(goal);
+    }
+
+    private static void calculateProgress(Goal goal){
+        Double amountAlreadySaved = goal.getAmountAlreadySaved();
+        Double targetSavingsAmount = goal.getTargetSavingsAmount();
+        Double decimal = (amountAlreadySaved / targetSavingsAmount) * 100;
+        goal.setProgressPercentage(decimal);
+        Double amountLeft = targetSavingsAmount - amountAlreadySaved;
+        goal.setAmountLeftUntilGoal(amountLeft);
+        logger.info("ProgressBar complete for goal");
     }
 
     @Override
@@ -62,14 +71,4 @@ public class GoalServiceImpl implements GoalService {
         return goalRepo.findAll();
     }
 
-    private static void calculateProgress(Goal goal){
-        Double amountAlreadySaved = goal.getAmountAlreadySaved();
-        Double targetSavingsAmount = goal.getTargetSavingsAmount();
-        Double decimal = (amountAlreadySaved / targetSavingsAmount) * 100;
-        goal.setProgressPercentage(decimal);
-
-        Double amountLeft = targetSavingsAmount - amountAlreadySaved;
-        goal.setAmountLeftUntilGoal(amountLeft);
-        log.info("ProgressBar complete for goal");
-    }
 }

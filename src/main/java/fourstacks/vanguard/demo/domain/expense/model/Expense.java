@@ -14,7 +14,7 @@ public class Expense {
     public Expense() {
     }
 
-    public Expense(Long id, Category category, String description) {
+    public Expense(Category category, String description) {
         this.id = id;
         this.category = category;
         this.description = description;
