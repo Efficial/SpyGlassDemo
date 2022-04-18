@@ -1,4 +1,5 @@
 package fourstacks.vanguard.demo.domain.customer.controller;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import fourstacks.vanguard.demo.domain.customer.exceptions.CustomerNotFoundException;
 import fourstacks.vanguard.demo.domain.customer.model.Customer;
 import fourstacks.vanguard.demo.domain.customer.service.CustomerService;
@@ -6,13 +7,15 @@ import fourstacks.vanguard.demo.domain.goal.exceptions.GoalNotFoundException;
 import fourstacks.vanguard.demo.domain.goal.model.Goal;
 import fourstacks.vanguard.demo.domain.goal.service.GoalService;
 import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/customer")
+@RequestMapping("customer")
 @Slf4j
 public class CustomerController {
 

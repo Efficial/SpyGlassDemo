@@ -1,12 +1,14 @@
 package fourstacks.vanguard.demo.domain.customer.model;
 
-import fourstacks.vanguard.demo.domain.expense.model.Expense;
+<<<<<<< HEAD
+=======
 import fourstacks.vanguard.demo.domain.goal.model.Goal;
+>>>>>>> ashley
 import javax.persistence.*;
 import java.util.Date;
-import java.util.List;
 
 @Entity
+@Table(name="customer")
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -21,15 +23,18 @@ public class Customer {
     private String aboutMe;
     private String photo;
 
+<<<<<<< HEAD
+=======
 //    @OneToMany(targetEntity = Expense.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
 //    @JoinColumn(name = "customerId", referencedColumnName = "id")
 //    private List<Expense> expenses;
 
 
-    @OneToMany(targetEntity = Goal.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
-    @JoinColumn(name = "customerId", referencedColumnName = "id")
-    private List<Goal> goals;
+    //@OneToMany(targetEntity = Goal.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
+    //@JoinColumn(name = "customerId", referencedColumnName = "id")
+    //private List<Goal> goals;
 
+>>>>>>> ashley
     public Customer() {
     }
 
@@ -117,13 +122,8 @@ public class Customer {
         this.photo = photo;
     }
 
-    public List<Goal> getGoals() {
-        return goals;
-    }
-
-    public void setGoals(List<Goal> goals) {
-        this.goals = goals;
-    }
+<<<<<<< HEAD
+=======
 
 //    public List<Expense> getExpenses() {
 //        return expenses;
@@ -133,6 +133,7 @@ public class Customer {
 //        this.expenses = expenses;
 //    }
 
+>>>>>>> ashley
     @Override
     public String toString() {
         return "Customer{" +
@@ -145,8 +146,6 @@ public class Customer {
                 ", dateOfBirth=" + dateOfBirth +
                 ", aboutMe='" + aboutMe + '\'' +
                 ", photo='" + photo + '\'' +
-                ", goals=" + goals +
-//                ", expenses=" + expenses +
                 '}';
     }
 }

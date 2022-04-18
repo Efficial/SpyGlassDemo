@@ -1,7 +1,6 @@
 package fourstacks.vanguard.demo.domain.goal.service;
 
 
-import fourstacks.vanguard.demo.domain.customer.service.CustomerServiceImpl;
 import fourstacks.vanguard.demo.domain.goal.exceptions.GoalNotFoundException;
 import fourstacks.vanguard.demo.domain.goal.model.Goal;
 import fourstacks.vanguard.demo.domain.goal.repo.GoalRepo;
