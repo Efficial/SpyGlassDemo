@@ -18,7 +18,11 @@ public class Goal {
     private GoalType goalType;
     private String name;
     private String goalDescription;
+<<<<<<< HEAD
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MMM-yyyy")
+=======
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
+>>>>>>> ashley
     private Date savingsDateGoal;
     private Double targetSavingsAmount;
     private Double amountAlreadySaved;
@@ -32,6 +36,7 @@ public class Goal {
         this.customer = customer;
         this.goalType = goalType;
         this.name = name;
+        this.targetSavingsAmount = targetSavingsAmount;
         this.goalDescription = goalDescription;
         this.savingsDateGoal = savingsDateGoal;
         this.amountAlreadySaved = amountAlreadySaved;

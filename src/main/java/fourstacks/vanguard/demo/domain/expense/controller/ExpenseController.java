@@ -16,7 +16,7 @@ import java.util.List;
 public class ExpenseController {
     private static Logger logger = LoggerFactory.getLogger(ExpenseController.class);
     private ExpenseService expenseService;
-    
+
     @Autowired
     public ExpenseController(ExpenseService expenseService){
         this.expenseService = expenseService;

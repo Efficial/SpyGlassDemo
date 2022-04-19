@@ -12,6 +12,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentMatchers;
+
+import org.mockito.BDDMockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -41,7 +43,7 @@ public class GoalTest {
     @BeforeEach
     public void setUp() throws ParseException {
         SimpleDateFormat Dateformat = new SimpleDateFormat("MM-dd-yyyy");
-        Customer customer =  new Customer("Yennifer", "Campos", 2022l, "ycampos", "codeDiff", Dateformat.parse("01-26-1997"));
+        Customer customer =  new Customer("Yennifer", "Campos", 2022l, "ycampos@gmail.com", Dateformat.parse("01-26-1997"));
         input = new Goal(customer, GoalType.DEBT_PAYOFF, "Pay credit card", "Pay off $2,000 in 6 moths", Dateformat.parse("10-18-2022"),2000.00, 500.00);
         output = new Goal(customer, GoalType.DEBT_PAYOFF, "Pay credit card", "Pay off $2,000 in 6 moths", Dateformat.parse("10-18-2022"),2000.00, 500.00);
         output.setId(1L);
@@ -87,7 +89,7 @@ public class GoalTest {
     @DisplayName("Update Goal - Success")
     public void updateGoalTest01() throws GoalNotFoundException, ParseException {
         SimpleDateFormat Dateformat = new SimpleDateFormat("MM-dd-yyyy");
-        Customer customer =  new Customer("Yennifer", "Campos", 2022l, "ycampos", "codeDiff", Dateformat.parse("01-26-1997"));
+        Customer customer = new Customer("Yenni", "Campos", 2022l, "ycampos@gmail.com", Dateformat.parse("01-26-1997"));
         Goal expectedGoalUpdate =  new Goal(customer, GoalType.DEBT_PAYOFF, "Pay credit card", "Pay off $2,000 in 6 moths", Dateformat.parse("10-18-2022"),4000.00, 700.00);
         expectedGoalUpdate.setId(1L);
         doReturn(Optional.of(input)).when(goalRepo).findById(1L);
@@ -100,7 +102,7 @@ public class GoalTest {
     @DisplayName("Update Goal - Fail")
     public void updateGoalTest02() throws GoalNotFoundException, ParseException {
         SimpleDateFormat Dateformat = new SimpleDateFormat("MM-dd-yyyy");
-        Customer customer =  new Customer("Yennifer", "Campos", 2022l, "ycampos", "codeDiff", Dateformat.parse("01-26-1997"));
+        Customer customer = new Customer("Yenni", "Campos", 2022l, "ycampos@gmail.com", Dateformat.parse("01-26-1997"));
         Goal expectedGoalUpdate =  new Goal(customer, GoalType.DEBT_PAYOFF, "Pay credit card", "Pay off $2,000 in 6 moths", Dateformat.parse("10-18-2022"),4000.00, 700.00);
         expectedGoalUpdate.setId(1l);
         doReturn(Optional.empty()).when(goalRepo).findById(1L);
@@ -116,5 +118,18 @@ public class GoalTest {
         Assertions.assertThrows(GoalNotFoundException.class, () ->{
             goalService.delete(1L);
         });
+    }
+
+
+    @Test
+    @DisplayName("Calculate Progress Test - Success")
+    public void calculateProgressTestSuccess(){
+        BDDMockito.doReturn(input).when(goalRepo).save(ArgumentMatchers.any());
+        Goal returnedGoal = goalService.create(input);
+        Assertions.assertNotNull(returnedGoal);
+
+        Double expected = 20.00;
+        Double actual = returnedGoal.getProgressPercentage();
+        Assertions.assertEquals(expected,actual);
     }
 }
