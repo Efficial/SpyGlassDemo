@@ -1,10 +1,9 @@
 package fourstacks.vanguard.demo.domain.expense;
-
-import fourstacks.vanguard.demo.domain.customer.model.Customer;
 import fourstacks.vanguard.demo.domain.expense.exception.ExpenseNotFoundException;
 import fourstacks.vanguard.demo.domain.expense.model.Expense;
 import fourstacks.vanguard.demo.domain.expense.repo.ExpenseRepo;
 import fourstacks.vanguard.demo.domain.expense.service.ExpenseService;
+import fourstacks.vanguard.demo.domain.expense.model.Category;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -17,7 +16,11 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.Optional;
-import static org.junit.jupiter.api.Assertions.*;
+
+
+import static fourstacks.vanguard.demo.domain.expense.model.Category.HOME_AUTO;
+
+
 import static org.mockito.Mockito.doReturn;
 
 @SpringBootTest
@@ -47,9 +50,10 @@ public class ExpenseTest {
     @DisplayName("ExpenseService create - Success")
     public void createExpense() {
         doReturn(output).when(expenseRepo).save(ArgumentMatchers.any());
-        Expense returnExpense = expenseService.create(input);
+        Expense returnedExpense = expenseService.create(input);
         Assertions.assertNotNull(output);
-        Assertions.assertEquals(returnExpense.toString(), input.toString());
+        Assertions.assertEquals(returnedExpense.getId(), 1L);
+
     }
 
     @Test
@@ -74,9 +78,11 @@ public class ExpenseTest {
     public void updateExpenseTest01() throws ExpenseNotFoundException {
         Expense expectedExpenseUpdate = new Expense(category, description);
         expectedExpenseUpdate.setId(1L);
-        doReturn(Optional.of(input)).when(expenseService).findById(1L);
-        Expense returnExpense = expenseService.update(expectedExpenseUpdate);
-        Assertions.assertEquals(expectedExpenseUpdate.toString(), returnExpense.toString());
+        doReturn(Optional.of(input)).when(expenseRepo).findById(1L);
+        doReturn(expectedExpenseUpdate).when(expenseRepo).save(ArgumentMatchers.any());
+        Expense actualExpense = expenseService.update(expectedExpenseUpdate);
+        Assertions.assertEquals(expectedExpenseUpdate.toString(), actualExpense.toString());
+
     }
 
     @Test
@@ -92,9 +98,12 @@ public class ExpenseTest {
     @Test
     @DisplayName("Delete Expense")
     public void deleteExpense() {
+
         doReturn(Optional.empty()).when(expenseRepo.findById(1L));
         Assertions.assertThrows(ExpenseNotFoundException.class, () -> {
         });
 
     }
 }
+
+
