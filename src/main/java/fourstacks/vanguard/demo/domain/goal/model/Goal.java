@@ -1,5 +1,6 @@
 package fourstacks.vanguard.demo.domain.goal.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import fourstacks.vanguard.demo.domain.customer.model.Customer;
 
 import javax.persistence.*;
@@ -17,6 +18,7 @@ public class Goal {
     private GoalType goalType;
     private String name;
     private String goalDescription;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
     private Date savingsDateGoal;
     private Double targetSavingsAmount;
     private Double amountAlreadySaved;

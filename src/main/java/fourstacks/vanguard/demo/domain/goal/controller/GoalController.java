@@ -1,7 +1,5 @@
 package fourstacks.vanguard.demo.domain.goal.controller;
 
-import fourstacks.vanguard.demo.domain.customer.exceptions.CustomerNotFoundException;
-import fourstacks.vanguard.demo.domain.customer.model.Customer;
 import fourstacks.vanguard.demo.domain.goal.exceptions.GoalNotFoundException;
 import fourstacks.vanguard.demo.domain.goal.model.Goal;
 import fourstacks.vanguard.demo.domain.goal.service.GoalService;
@@ -23,14 +21,14 @@ public class GoalController {
 
     @Autowired
     public GoalController(GoalService goalService) {
-        this.goalService=goalService;
-        }
+        this.goalService = goalService;
+    }
 
     @PostMapping("")
-    public ResponseEntity<Goal> create(@RequestBody Goal goal){
+    public ResponseEntity<Goal> create(@RequestBody Goal goal) {
         goal = goalService.create(goal);
         return new ResponseEntity<>(goal, HttpStatus.CREATED);
-        }
+    }
 
     @GetMapping("/{id}")
     public ResponseEntity<Goal> requestUser(@PathVariable Long id) throws GoalNotFoundException {
@@ -45,4 +43,30 @@ public class GoalController {
         return new ResponseEntity<>(all, HttpStatus.OK);
     }
 
+    @PutMapping("")
+    public ResponseEntity<?> updateGoal(@RequestBody Goal goal) {
+        try {
+            Goal updatedGoal = goalService.update(goal);
+            ResponseEntity response = new ResponseEntity(updatedGoal, HttpStatus.OK);
+            return response;
+        } catch (GoalNotFoundException e) {
+            return ResponseEntity
+                    .status(HttpStatus.NOT_FOUND)
+                    .build();
+        }
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteGoal(@PathVariable Long id) {
+        try {
+            goalService.delete(id);
+            return ResponseEntity
+                    .status(HttpStatus.NO_CONTENT)
+                    .build();
+        } catch (GoalNotFoundException e) {
+            return ResponseEntity
+                    .status(HttpStatus.NOT_FOUND)
+                    .build();
+        }
+    }
+}
