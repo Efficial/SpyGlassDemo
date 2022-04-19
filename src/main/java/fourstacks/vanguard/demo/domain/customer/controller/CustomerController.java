@@ -4,7 +4,6 @@ import fourstacks.vanguard.demo.domain.customer.exceptions.CustomerNotFoundExcep
 import fourstacks.vanguard.demo.domain.customer.model.Customer;
 import fourstacks.vanguard.demo.domain.customer.service.CustomerService;
 import lombok.extern.slf4j.Slf4j;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

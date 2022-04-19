@@ -1,13 +1,10 @@
 package fourstacks.vanguard.demo.domain.expense;
 
-import fourstacks.vanguard.demo.domain.customer.model.Customer;
 import fourstacks.vanguard.demo.domain.expense.exception.ExpenseNotFoundException;
 import fourstacks.vanguard.demo.domain.expense.model.Category;
 import fourstacks.vanguard.demo.domain.expense.model.Expense;
 import fourstacks.vanguard.demo.domain.expense.repo.ExpenseRepo;
 import fourstacks.vanguard.demo.domain.expense.service.ExpenseService;
-import fourstacks.vanguard.demo.domain.goal.exceptions.GoalNotFoundException;
-import fourstacks.vanguard.demo.domain.goal.model.Goal;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
