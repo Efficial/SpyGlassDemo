@@ -2,11 +2,14 @@ package fourstacks.vanguard.demo.domain.customer.controller;
 import fourstacks.vanguard.demo.domain.customer.exceptions.CustomerNotFoundException;
 import fourstacks.vanguard.demo.domain.customer.model.Customer;
 import fourstacks.vanguard.demo.domain.customer.service.CustomerService;
-import fourstacks.vanguard.demo.domain.goal.service.GoalService;
+
+
+import fourstacks.vanguard.demo.security.models.FireBaseUser;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -15,7 +18,7 @@ import org.springframework.web.bind.annotation.*;
 public class CustomerController {
 
     private CustomerService customerService;
-    private GoalService goalService;
+
 
 
     @Autowired
@@ -28,6 +31,7 @@ public class CustomerController {
         customer = customerService.create(customer);
         return new ResponseEntity<>(customer, HttpStatus.CREATED);
     }
+
 
 //    @PutMapping("")
 //    public ResponseEntity<Customer> updateGoal(@RequestBody Goal goal) throws CustomerNotFoundException, GoalNotFoundException {
@@ -76,6 +80,19 @@ public class CustomerController {
                     .status(HttpStatus.NOT_FOUND)
                     .build();
         }
+    }
+
+    @GetMapping("/me")
+    public ResponseEntity<Customer> getUserInfo(@AuthenticationPrincipal FireBaseUser fireBaseUser) throws Exception {
+        String email = fireBaseUser.getEmail();
+        Customer user = customerService.findByEmail(email);
+        return ResponseEntity.ok(user);
+    }
+
+    @PostMapping("/me")
+    public ResponseEntity<Customer> createNewUser(@RequestBody Customer user){
+        user = customerService.create(user);
+        return ResponseEntity.ok(user);
     }
 
 }

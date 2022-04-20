@@ -18,11 +18,6 @@ public class Goal {
     private GoalType goalType;
     private String name;
     private String goalDescription;
-<<<<<<< HEAD
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MMM-yyyy")
-=======
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
->>>>>>> ashley
     private Date savingsDateGoal;
     private Double targetSavingsAmount;
     private Double amountAlreadySaved;
