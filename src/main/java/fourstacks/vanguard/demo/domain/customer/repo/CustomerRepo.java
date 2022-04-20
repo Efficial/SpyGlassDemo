@@ -9,6 +9,6 @@ public interface CustomerRepo extends CrudRepository<Customer, Long> {
 
     Optional<Customer> findByFirstNameAndLastName(String firstName, String lastName);
 
-    Optional<Customer> findByUserName(String userName);
+    Optional<Customer> findByEmail(String email);
 
 }

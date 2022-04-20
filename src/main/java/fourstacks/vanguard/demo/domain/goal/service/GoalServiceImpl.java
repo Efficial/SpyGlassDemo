@@ -4,6 +4,7 @@ package fourstacks.vanguard.demo.domain.goal.service;
 import fourstacks.vanguard.demo.domain.goal.exceptions.GoalNotFoundException;
 import fourstacks.vanguard.demo.domain.goal.model.Goal;
 import fourstacks.vanguard.demo.domain.goal.repo.GoalRepo;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import java.util.Optional;
 
 
 @Service
+@Slf4j
 public class GoalServiceImpl implements GoalService {
     private static Logger logger = LoggerFactory.getLogger(GoalServiceImpl.class);
     private GoalRepo goalRepo;
@@ -49,6 +51,7 @@ public class GoalServiceImpl implements GoalService {
     @Override
     public Goal update(Goal goal) throws GoalNotFoundException {
         Long id = goal.getId();
+        calculateProgress(goal);
         Optional<Goal> goalOptional= goalRepo.findById(id);
         if (goalOptional.isEmpty())
             throw new GoalNotFoundException("Goal not found");
@@ -67,4 +70,5 @@ public class GoalServiceImpl implements GoalService {
     public Iterable<Goal> findAll() throws GoalNotFoundException {
         return goalRepo.findAll();
     }
+
 }

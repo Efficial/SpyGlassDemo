@@ -40,8 +40,8 @@ public class CustomerTest {
     @BeforeEach
     public void setUp() throws ParseException {
         SimpleDateFormat Dateformat = new SimpleDateFormat("MM-dd-yyyy");
-        input= new Customer("Yennifer", "Campos", 2022l, "ycampos", "codeDiff", Dateformat.parse("01-26-1997"));
-        output= new Customer("Yennifer", "Campos", 2022l, "ycampos", "codeDiff", Dateformat.parse("01-26-1997"));
+        input= new Customer("Yennifer", "Campos", 2022l, "ycampos@gmail.com", Dateformat.parse("01-26-1997"));
+        output=  new Customer("Yennifer", "Campos", 2022l, "ycampos@gmail.com", Dateformat.parse("01-26-1997"));
         output.setId(1l);
     }
 
@@ -86,7 +86,7 @@ public class CustomerTest {
     @DisplayName("Update Customer - Success")
     public void updateCustomerTest01() throws ParseException, CustomerNotFoundException {
         SimpleDateFormat Dateformat = new SimpleDateFormat("MM-dd-yyyy");
-        Customer expectedCustomerUpdate = new Customer("Emmanuel", "Warrior", 2021l, "efficial", "codeDiff1", Dateformat.parse("01-26-1997"));
+        Customer expectedCustomerUpdate = new Customer("Emmanuel", "Warrior", 2022l, "ycampos@gmail.com", Dateformat.parse("01-26-1997"));
         expectedCustomerUpdate.setId(1l);
         doReturn(Optional.of(input)).when(customerRepo).findById(1l);
         doReturn(expectedCustomerUpdate).when(customerRepo).save(ArgumentMatchers.any());
@@ -98,7 +98,7 @@ public class CustomerTest {
     @DisplayName("Update Customer - Fail")
     public void updateCustomerTest02() throws ParseException {
         SimpleDateFormat Dateformat = new SimpleDateFormat("MM-dd-yyyy");
-        Customer updatedCustomer = new Customer("Emmanuel", "Warrior", 2021l, "efficial", "codeDiff1", Dateformat.parse("01-26-1997"));
+        Customer updatedCustomer = new Customer("Emmanuel", "Warrior", 2022l, "ycampos@gmail.com", Dateformat.parse("01-26-1997"));
         doReturn(Optional.empty()).when(customerRepo).findById(1l);
         Assertions.assertThrows(CustomerNotFoundException.class, () ->{
             customerService.update(updatedCustomer);
@@ -117,11 +117,11 @@ public class CustomerTest {
 
     @Test
     @DisplayName("Customer Service - FindByUserName")
-    public void findByUserName() throws CustomerNotFoundException {
-        String userName= "ycampos";
-        doReturn(Optional.of(output)).when(customerRepo).findByUserName(userName);
-        Customer actualCustomer = customerService.findByUserName(userName);
-        Assertions.assertEquals(userName, actualCustomer.getUserName());
+    public void findByEmail() throws CustomerNotFoundException {
+        String email= "ycampos@gmail.com";
+        doReturn(Optional.of(output)).when(customerRepo).findByEmail(email);
+        Customer actualCustomer = customerService.findByEmail(email);
+        Assertions.assertEquals(email, actualCustomer.getEmail());
     }
 }
 

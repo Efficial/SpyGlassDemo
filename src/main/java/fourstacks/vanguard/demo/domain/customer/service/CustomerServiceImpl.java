@@ -70,11 +70,12 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public void delete(Long id) throws CustomerNotFoundException {
+    public Boolean delete(Long id) throws CustomerNotFoundException {
         Optional<Customer> customerOptional = customerRepo.findById(id);
         if(customerOptional.isEmpty())
             throw new CustomerNotFoundException("Customer not found");
         customerRepo.delete(customerOptional.get());
+        return true;
     }
 
     @Override
@@ -92,8 +93,8 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public Customer findByUserName(String userName) throws CustomerNotFoundException {
-        Optional<Customer> customerOptional = customerRepo.findByUserName(userName);
+    public Customer findByEmail(String email) throws CustomerNotFoundException {
+        Optional<Customer> customerOptional = customerRepo.findByEmail(email);
         if(customerOptional.isEmpty())
             throw new CustomerNotFoundException("Customer not found");
         return customerOptional.get();
