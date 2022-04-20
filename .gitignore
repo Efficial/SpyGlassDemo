@@ -34,3 +34,5 @@ build/
 application.properties
 .mvn/**
 mvnw**
+
+firebase_config.json
