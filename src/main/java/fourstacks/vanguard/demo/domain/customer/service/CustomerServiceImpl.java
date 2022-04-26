@@ -21,7 +21,7 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Autowired
     public CustomerServiceImpl(CustomerRepo customerRepo){
-        this.customerRepo=customerRepo;
+        this.customerRepo= customerRepo;
     }
 
     @Override

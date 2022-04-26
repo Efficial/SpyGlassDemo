@@ -90,13 +90,7 @@ public class CustomerControllerTest extends BaseControllerTest {
 
 
 
-//    @Test
-//    @DisplayName("GET /customer/ Not Found")
-//    public void getCustomerByIdTestFail() throws Exception {
-//        BDDMockito.doThrow(new CustomerNotFoundException("Not Found")).when(mockCustomerService).getById(1l);
-//        mockMvc.perform(get("/customer/{id}", 1))
-//                .andExpect(status().isNotFound());
-//    }
+
 
 
 

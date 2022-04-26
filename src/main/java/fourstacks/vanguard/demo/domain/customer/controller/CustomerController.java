@@ -90,9 +90,9 @@ public class CustomerController {
     }
 
     @PostMapping("/me")
-    public ResponseEntity<Customer> createNewUser(@RequestBody Customer user){
-        user = customerService.create(user);
-        return ResponseEntity.ok(user);
+    public ResponseEntity<Customer> createNewUser(@RequestBody Customer customer){
+        customer = customerService.create(customer);
+        return ResponseEntity.ok(customer);
     }
 
 }
